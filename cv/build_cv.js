@@ -133,7 +133,10 @@ const body = [
 
   sectionHeading("Key Projects"),
   entryHeader("FEXIWALT: Ecommerce & Classifieds Marketplace", "JavaScript, Firebase, PWA"),
-  para([run("Live at ", { italics: true, color: MUTED, size: 19 }), link("fexiwalt.com", "https://fexiwalt.com")], { spacing: { after: 40 } }),
+  para([
+    run("Live at ", { italics: true, color: MUTED, size: 19 }), link("fexiwalt.com", "https://fexiwalt.com"),
+    run("   |   Code: ", { italics: true, color: MUTED, size: 19 }), link("github.com/KODUAAA/fexiwalt", "https://github.com/KODUAAA/fexiwalt"),
+  ], { spacing: { after: 40 } }),
   bullet("Built and deployed a live marketplace for Ghana where people buy and sell phones, vehicles, property, fashion and more."),
   bullet("Mobile-first, installable web app with offline support, category browsing, search and WhatsApp-based buyer-seller contact."),
 
