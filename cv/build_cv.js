@@ -153,6 +153,10 @@ const body = [
   entryHeader("SmartPay Solutions: Network Infrastructure Design", "Academic Project"),
   bullet("Designed a full network security architecture for a fintech scenario, covering VLAN segmentation, IPsec VPN, and WPA3 wireless security."),
 
+  entryHeader("Dream Villa VR: 3D Web Experience", "A-Frame, WebXR, JavaScript"),
+  para([run("Live at ", { italics: true, color: MUTED, size: 19 }), link("pscsc220024.vercel.app", "https://pscsc220024.vercel.app")], { spacing: { after: 40 } }),
+  bullet("Built a browser-based 3D walkthrough of a furnished villa with animated characters and water, optimising models and textures for fast loading."),
+
   sectionHeading("Work Experience"),
   entryHeader("Mobile Money Vendor", "Kumasi, Ghana"),
   bullet("Managed daily transactions, customer service, and end-of-day cash reconciliation with accuracy under pressure."),
