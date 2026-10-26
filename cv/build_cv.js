@@ -5,7 +5,7 @@ const path = require("path");
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   WidthType, BorderStyle, ShadingType, AlignmentType, LevelFormat,
-  TabStopType,
+  TabStopType, ExternalHyperlink,
 } = require("docx");
 
 const ACCENT = "B3121B";   // deep red
@@ -64,6 +64,11 @@ const skillsTable = (left, right) => new Table({
   rows: [new TableRow({ children: [skillCell(left), skillCell(right)] })],
 });
 
+const link = (text, url) => new ExternalHyperlink({
+  link: url,
+  children: [run(text, { size: 19, color: ACCENT, underline: {} })],
+});
+
 // Header band
 const header = [
   new Paragraph({
@@ -81,6 +86,15 @@ const header = [
     spacing: { after: 80 },
     shading: { type: ShadingType.CLEAR, color: "auto", fill: "F2F2F2" },
     children: [run("Accra, Ghana   |   +233 535 862 985   |   brightkoduaakwasi@gmail.com", { size: 19, color: MUTED })],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { after: 80 },
+    children: [
+      link("github.com/KODUAAA", "https://github.com/KODUAAA"),
+      run("   |   ", { size: 19, color: MUTED }),
+      link("koduaaa.github.io", "https://koduaaa.github.io"),
+    ],
   }),
 ];
 
@@ -107,7 +121,7 @@ const body = [
   skillsTable(
     [
       ["Programming", "Python, JavaScript, Node.js"],
-      ["Web Development", "React, Express, Flask"],
+      ["Web Development", "React, Express, Flask, Firebase, PWAs"],
       ["Databases", "PostgreSQL, Supabase, SQL"],
     ],
     [
@@ -118,14 +132,20 @@ const body = [
   ),
 
   sectionHeading("Key Projects"),
+  entryHeader("FEXIWALT: Ecommerce & Classifieds Marketplace", "JavaScript, Firebase, PWA"),
+  para([run("Live at ", { italics: true, color: MUTED, size: 19 }), link("fexiwalt.com", "https://fexiwalt.com")], { spacing: { after: 40 } }),
+  bullet("Built and deployed a live marketplace for Ghana where people buy and sell phones, vehicles, property, fashion and more."),
+  bullet("Mobile-first, installable web app with offline support, category browsing, search and WhatsApp-based buyer-seller contact."),
+
   entryHeader("Phishing URL Detection System", "Flask, Machine Learning"),
   subLine("Final-Year Dissertation Project"),
   bullet("Developing a machine-learning system that detects phishing URLs in real time, applying AI to a practical security problem."),
   bullet("Covers data collection, feature engineering, model training and evaluation, and deployment through a Flask web interface."),
 
-  entryHeader("Lamont Motors: Full-Stack Web Application", "Node.js, Express, React, PostgreSQL, Supabase"),
-  bullet("Built and deployed a complete car-dealership platform end-to-end as the sole developer."),
-  bullet("Independently handled backend setup, environment configuration, and database migration to Supabase/PostgreSQL."),
+  entryHeader("Agoloso Motors: Car Dealership Platform", "Node.js, Express, PostgreSQL, Supabase, JWT"),
+  para([run("Code: ", { italics: true, color: MUTED, size: 19 }), link("github.com/KODUAAA/agoloso-motors", "https://github.com/KODUAAA/agoloso-motors")], { spacing: { after: 40 } }),
+  bullet("Built and deployed end-to-end as the sole developer: a public site for browsing stock, booking test drives and applying for finance, plus a staff admin dashboard."),
+  bullet("Secured with bcrypt password hashing, JWT sessions, role-based access, rate limiting and row-level security; covered by 20 end-to-end API tests."),
 
   entryHeader("SmartPay Solutions: Network Infrastructure Design", "Academic Project"),
   bullet("Designed a full network security architecture for a fintech scenario, covering VLAN segmentation, IPsec VPN, and WPA3 wireless security."),
